@@ -1,0 +1,8 @@
+Build
+build
+Win32
+.idea/
+cmake-build-*/
+.vs/
+*.swp
+
