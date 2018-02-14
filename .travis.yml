@@ -51,20 +51,20 @@ install:
 before_script:
   - export CXX=${COMPILER}
   - cd ${TRAVIS_BUILD_DIR}
-  - cmake -H. -Bbuild-debug   -DCMAKE_BUILD_TYPE=Debug   -Wdev -DENABLE_TESTS_AND_COVERAGE=ON
-  - cmake -H. -Bbuild-release -DCMAKE_BUILD_TYPE=Release -Wdev -DENABLE_TESTS_AND_COVERAGE=ON
+  - cmake -H. -Bbuild-debug   -DCMAKE_BUILD_TYPE=Debug   -Wdev -DENABLE_COVERAGE=ON
+  - cmake -H. -Bbuild-release -DCMAKE_BUILD_TYPE=Release -Wdev
 
 script:
+  - cd build-debug
+  - make -j 2 VERBOSE=1
+  -  CTEST_OUTPUT_ON_FAILURE=1 test -j 2
   - |
-    cd build-debug
-    make -j 2 VERBOSE=1
-    CTEST_OUTPUT_ON_FAILURE=1 test -j 2
     if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
         make gcov
         make lcov
         bash <(curl -s https://codecov.io/bash) -X gcov || echo "Codecov did not collect coverage reports"
     fi
-    cd ../build-release
-    make -j 2
-    CTEST_OUTPUT_ON_FAILURE=1 ctest -j 2
+  - cd ../build-release
+  - make -j 2
+  - CTEST_OUTPUT_ON_FAILURE=1 ctest -j 2
 
