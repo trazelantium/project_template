@@ -3,7 +3,7 @@ sudo: false
 
 common_sources: &all_sources
   - ubuntu-toolchain-r-test
-  - llvm-toolchain-trusty
+  - llvm-toolchain-trusty-5.0
 
 matrix:
   include:
