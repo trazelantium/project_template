@@ -6,9 +6,10 @@ project(project_template VERSION 1.0.0)
 set_property (GLOBAL PROPERTY USE_FOLDERS ON)
 
 # compile settings
-set (CMAKE_CXX_STANDARD 17)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_CXX_EXTENSIONS OFF)
+set_target_properties(${PROJECT_NAME} PROPERTIES
+                      CXX_STANDARD 17
+                      CXX_STANDARD_REQUIRED ON
+                      CXX_EXTENSIONS OFF)
 
 #checks that the given hard-coded list contains all headers + sources in the given folder
 function(CheckFileList LIST_VAR FOLDER)
