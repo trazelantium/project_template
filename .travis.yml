@@ -13,7 +13,7 @@ matrix:
       addons:
         apt:
           sources: *all_sources
-          packages: ['clang++-5.0', 'lcov']
+          packages: ['clang-5.0', 'lcov']
       env: COMPILER='clang++-5.0'
     
     - os: linux
@@ -56,7 +56,7 @@ before_script:
 script:
   - |
     cd build-debug
-    make -j 2
+    make -j 2 VERBOSE=1
     CTEST_OUTPUT_ON_FAILURE=1 test -j 2
     if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
         make gcov
