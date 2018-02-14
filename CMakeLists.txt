@@ -5,6 +5,11 @@ project(project_template VERSION 1.0.0)
 
 set_property (GLOBAL PROPERTY USE_FOLDERS ON)
 
+# compile settings
+set (CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
 #checks that the given hard-coded list contains all headers + sources in the given folder
 function(CheckFileList LIST_VAR FOLDER)
   set(MESSAGE " should be added to the variable ${LIST_VAR}")
@@ -69,10 +74,6 @@ target_include_directories(${PROJECT_NAME} PUBLIC
 set (THREADS_PREFER_PTHREAD_FLAG ON)
 find_package (Threads REQUIRED)
 target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads)
-
-
-# compile settings
-set (CMAKE_CXX_STANDARD 17)
 
 # Fix behavior of CMAKE_CXX_STANDARD when targeting macOS.
 # if (CMAKE_AppleClang_COMPILER_ID AND POLICY CMP0024)
