@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.3)
 
 # project settings
-project(project_template VERSION 1.0.0 LANGUAGES CXX)
+project(project_template VERSION 1.0.0)
 
 set_property (GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -75,7 +75,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads)
 set (CMAKE_CXX_STANDARD 17)
 
 if (CMAKE_MSVC_COMPILER_ID)
-    target_compile_options(${PROJECT_NAME} PRIVATE /W4)
+    target_compile_options(${PROJECT_NAME} PRIVATE /W4 /premissive-)
 else()
     target_compile_options(${PROJECT_NAME} PRIVATE -Wall -Wextra -Wpedantic)
 endif()
