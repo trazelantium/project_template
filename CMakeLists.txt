@@ -88,7 +88,7 @@ endif()
 
 
 # test and coverage config
-option(ENABLE_TESTS_AND_COVERAGE "Enable to build tests and coverage reporting." ON)
+option(ENABLE_TESTS_AND_COVERAGE "Enable to build tests and coverage reporting." OFF)
 if (ENABLE_TESTS_AND_COVERAGE)
     enable_testing()
     add_subdirectory(tests)
