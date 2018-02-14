@@ -73,8 +73,9 @@ target_link_libraries(${PROJECT_NAME} PRIVATE Threads::Threads)
 
 # compile settings
 set (CMAKE_CXX_STANDARD 17)
+
 # Fix behavior of CMAKE_CXX_STANDARD when targeting macOS.
-if (POLICY CMP0025)
+if (CMAKE_AppleClang_COMPILER_ID AND POLICY CMP0025)
   cmake_policy(SET CMP0025 NEW)
 endif ()
 
