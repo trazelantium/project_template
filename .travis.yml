@@ -24,19 +24,18 @@ matrix:
           packages: ['g++-7', 'lcov']
       env: COMPILER='g++-7'
 
-    - os: osx
-      osx_image: xcode8.3
-      compiler: clang
-      env: COMPILER='clang++'
-
-    - os: osx
-      osx_image: xcode9.1
-      compiler: clang
-      env: COMPILER='clang++'
+      #    - os: osx
+      #      osx_image: xcode8.3
+      #      compiler: clang
+      #      env: COMPILER='clang++'
+      #
+      #    - os: osx
+      #      osx_image: xcode9.1
+      #      compiler: clang
+      #      env: COMPILER='clang++'
 
 
 install:
-  - ${COMPILER} --version
   - DEPS_DIR="${TRAVIS_BUILD_DIR}/deps"
   - mkdir -p ${DEPS_DIR} && cd ${DEPS_DIR}
   - |
@@ -50,13 +49,14 @@ install:
 
 before_script:
   - export CXX=${COMPILER}
+  - ${CXX} --version
   - cd ${TRAVIS_BUILD_DIR}
   - cmake -H. -Bbuild-debug   -DCMAKE_BUILD_TYPE=Debug   -Wdev -DENABLE_COVERAGE=ON
   - cmake -H. -Bbuild-release -DCMAKE_BUILD_TYPE=Release -Wdev
 
 script:
   - cd build-debug
-  - make -j 2
+  - make -j 2 VERBOSE=1
   -  CTEST_OUTPUT_ON_FAILURE=1 ctest -j 2
   - |
     if [[ "${TRAVIS_OS_NAME}" == "linux" ]]; then
