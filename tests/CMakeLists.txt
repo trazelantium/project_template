@@ -17,8 +17,8 @@ enable_testing()
 ParseAndAddCatchTests (${TEST_PROJECT_NAME})
 
 # coverage settings
-option(ENABLE_COVERAGE "Enable to build tests." OFF)
-if (ENABLE_COVERAGE)
+option(TEST_ENABLE_COVERAGE "Enable to build coverage." OFF)
+if (TEST_ENABLE_COVERAGE)
     set(ENABLE_COVERAGE ON CACHE BOOL "Enable coverage build." FORCE)
     list(APPEND CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/CMake")
     find_package(codecov)

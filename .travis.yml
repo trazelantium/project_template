@@ -51,7 +51,7 @@ before_script:
   - export CXX=${COMPILER}
   - ${CXX} --version
   - cd ${TRAVIS_BUILD_DIR}
-  - cmake -H. -Bbuild-debug   -DCMAKE_BUILD_TYPE=Debug   -Wdev -DENABLE_COVERAGE=ON
+  - cmake -H. -Bbuild-debug   -DCMAKE_BUILD_TYPE=Debug   -Wdev -DTEST_ENABLE_COVERAGE=ON
   - cmake -H. -Bbuild-release -DCMAKE_BUILD_TYPE=Release -Wdev
 
 script:
