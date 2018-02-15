@@ -13,7 +13,7 @@ matrix:
       addons:
         apt:
           sources: *all_sources
-          packages: ['clang-5.0', 'lcov']
+          packages: ['clang-5.0', 'g++-7', 'lcov']
       env: COMPILER='clang++-5.0'
     
     - os: linux
