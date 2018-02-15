@@ -56,10 +56,10 @@ CheckFileList(PROJECT_SRC_FILES ${PROJECT_SRC_PATH})
 # target_include_directories(${PROJECT_NAME} INTERFACE ${PROJECT_INCLUDE_PATH} ${THIRD_PARTY_INCLUDE_PATH}) 
 
 # library
-# add_library(${PROJECT_NAME} ${PROJECT_SRC_FILES})
+add_library(${PROJECT_NAME} ${PROJECT_SRC_FILES})
 
 # executable
-add_executable(${PROJECT_NAME} ${PROJECT_SRC_FILES})
+# add_executable(${PROJECT_NAME} ${PROJECT_SRC_FILES})
 
 add_subdirectory (third_party EXCLUDE_FROM_ALL)
 
